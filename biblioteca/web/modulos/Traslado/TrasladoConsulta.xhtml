@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.trasladoConsulta}">
+<center><h1>traslado Consulta</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_traslado}" for="id_traslado" />
+<h:inputText id="id_traslado" value="#{traslado.id_traslado}" title="#{mensajes.id_traslado}" required="true" requiredMessage="#{mensajes.id_traslado}"/>
+<h:outputLabel value="#{mensajes.id_usuario_ori}" for="id_usuario_ori" />
+<h:inputText id="id_usuario_ori" value="#{traslado.id_usuario_ori}" title="#{mensajes.id_usuario_ori}" required="true" requiredMessage="#{mensajes.id_usuario_ori}"/>
+<h:outputLabel value="#{mensajes.id_usuario_des}" for="id_usuario_des" />
+<h:inputText id="id_usuario_des" value="#{traslado.id_usuario_des}" title="#{mensajes.id_usuario_des}" required="false" requiredMessage="#{mensajes.id_usuario_des}"/>
+<h:outputLabel value="#{mensajes.id_sala_ori}" for="id_sala_ori" />
+<h:inputText id="id_sala_ori" value="#{traslado.id_sala_ori}" title="#{mensajes.id_sala_ori}" required="true" requiredMessage="#{mensajes.id_sala_ori}"/>
+<h:outputLabel value="#{mensajes.id_sala_des}" for="id_sala_des" />
+<h:inputText id="id_sala_des" value="#{traslado.id_sala_des}" title="#{mensajes.id_sala_des}" required="false" requiredMessage="#{mensajes.id_sala_des}"/>
+<h:outputLabel value="#{mensajes.id_ejemplar}" for="id_ejemplar" />
+<h:selectOneMenu value="#{Marc_ejemplar.id_ejemplar}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.fecha_ori}" for="fecha_ori" />
+<h:inputText id="fecha_ori" value="#{traslado.fecha_ori}" title="#{mensajes.fecha_ori}" required="true" requiredMessage="#{mensajes.fecha_ori}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_des}" for="fecha_des" />
+<h:inputText id="fecha_des" value="#{traslado.fecha_des}" title="#{mensajes.fecha_des}" required="false" requiredMessage="#{mensajes.fecha_des}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.temporal}" for="temporal" />
+<h:selectBooleanCheckbox value="#{temporal}"  width="5" height="5" required="false" requiredMessage="#{mensajes.temporal}" />
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.trasladoConsulta}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

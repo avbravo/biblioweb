@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.bibliotecaListar}">
+<center><h1>biblioteca Listar</h1></center>
+<p:dataTable var="var" value="#{bibliotecaController.bibliotecalist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{bibliotecaController.selectedBiblioteca}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_biblioteca}" />
+     </f:facet>
+     <h:outputText value="#{var.id_biblioteca}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.id_institucion}" for="id_institucion" />
+<h:selectOneMenu value="#{Institucion.id_institucion}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_region}" for="id_region" />
+<h:selectOneMenu value="#{Region.id_region}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:selectOneMenu value="#{Estatus.id_estatus}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.codigo}" />
+     </f:facet>
+     <h:outputText value="#{var.codigo}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.nombre}" />
+     </f:facet>
+     <h:outputText value="#{var.nombre}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.telefono}" />
+     </f:facet>
+     <h:outputText value="#{var.telefono}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.fax}" />
+     </f:facet>
+     <h:outputText value="#{var.fax}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.email}" />
+     </f:facet>
+     <h:outputText value="#{var.email}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.apostal}" />
+     </f:facet>
+     <h:outputText value="#{var.apostal}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.direccion}" />
+     </f:facet>
+     <h:outputText value="#{var.direccion}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.observacion}" />
+     </f:facet>
+     <h:outputText value="#{var.observacion}" />
+   </p:column>
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{bibliotecaController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.bibliotecaListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

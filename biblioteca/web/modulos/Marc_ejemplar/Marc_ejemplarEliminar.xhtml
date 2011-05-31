@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.marc_ejemplarEliminar}">
+<center><h1>marc_ejemplar Eliminar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_ejemplar}" for="id_ejemplar" />
+<h:inputText id="id_ejemplar" value="#{marc_ejemplar.id_ejemplar}" title="#{mensajes.id_ejemplar}" required="true" requiredMessage="#{mensajes.id_ejemplar}"/>
+<h:outputLabel value="#{mensajes.id_sala}" for="id_sala" />
+<h:selectOneMenu value="#{Sala.id_sala}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_adquisicion}" for="id_adquisicion" />
+<h:selectOneMenu value="#{Adquisicion.id_adquisicion}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:selectOneMenu value="#{Estatus.id_estatus}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.codigo_barra}" for="codigo_barra" />
+<h:inputText id="codigo_barra" value="#{marc_ejemplar.codigo_barra}" title="#{mensajes.codigo_barra}" required="true" requiredMessage="#{mensajes.codigo_barra}"/>
+<h:outputLabel value="#{mensajes.observacion}" for="observacion" />
+<h:inputText id="observacion" value="#{marc_ejemplar.observacion}" title="#{mensajes.observacion}" required="false" requiredMessage="#{mensajes.observacion}"/>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{marc_ejemplar.fecha}" title="#{mensajes.fecha}" required="false" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.hora}" for="hora" />
+<h:inputText id="hora" value="#{marc_ejemplar.hora}" title="#{mensajes.hora}" required="false" requiredMessage="#{mensajes.hora}"/>
+<h:outputLabel value="#{mensajes.numero}" for="numero" />
+<h:inputText id="numero" value="#{marc_ejemplar.numero}" title="#{mensajes.numero}" required="true" requiredMessage="#{mensajes.numero}"/>
+<h:outputLabel value="#{mensajes.monto}" for="monto" />
+<h:inputText id="monto" value="#{marc_ejemplar.monto}" title="#{mensajes.monto}" required="false" requiredMessage="#{mensajes.monto}"/>
+<h:outputLabel value="#{mensajes.id_usuario}" for="id_usuario" />
+<h:selectOneMenu value="#{Usuario.id_usuario}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_serie}" for="id_serie" />
+<h:selectOneMenu value="#{Marc_serie.id_serie}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.verificado}" for="verificado" />
+<h:selectBooleanCheckbox value="#{verificado}"  width="5" height="5" required="false" requiredMessage="#{mensajes.verificado}" />
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{marc_ejemplarController.Eliminar}" value="#{mensajes['boton.eliminar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.marc_ejemplarEliminar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.servicio_bibliotecaListar}">
+<center><h1>servicio_biblioteca Listar</h1></center>
+<p:dataTable var="var" value="#{servicio_bibliotecaController.servicio_bibliotecalist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{servicio_bibliotecaController.selectedServicio_biblioteca}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_serbib}" />
+     </f:facet>
+     <h:outputText value="#{var.id_serbib}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.id_biblioteca}" for="id_biblioteca" />
+<h:selectOneMenu value="#{Biblioteca.id_biblioteca}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_perfil}" for="id_perfil" />
+<h:selectOneMenu value="#{Perfil.id_perfil}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_servicio}" for="id_servicio" />
+<h:selectOneMenu value="#{Servicio.id_servicio}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_documento}" for="id_documento" />
+<h:selectOneMenu value="#{Documento.id_documento}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:selectOneMenu value="#{Estatus.id_estatus}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.dias}" />
+     </f:facet>
+     <h:outputText value="#{var.dias}" />
+   </p:column>
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{servicio_bibliotecaController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.servicio_bibliotecaListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

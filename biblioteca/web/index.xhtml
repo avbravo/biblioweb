@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form>
+ <center><h1><h:outputLabel  value="#{mensajes['titulo.aplicacion']}"/></h1></center>
+ <h:panelGrid columns="1">
+<h:outputText value="#{mensajes['titulo.aplicacion']}"/>
+
+ </h:panelGrid>
+<br />
+<h:messages/>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.adquisicionEliminar}">
+<center><h1>adquisicion Eliminar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_adquisicion}" for="id_adquisicion" />
+<h:inputText id="id_adquisicion" value="#{adquisicion.id_adquisicion}" title="#{mensajes.id_adquisicion}" required="true" requiredMessage="#{mensajes.id_adquisicion}"/>
+<h:outputLabel value="#{mensajes.id_cuenta}" for="id_cuenta" />
+<h:selectOneMenu value="#{Cuenta.id_cuenta}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_institucion}" for="id_institucion" />
+<h:selectOneMenu value="#{Institucion.id_institucion}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.cantidad}" for="cantidad" />
+<h:inputText id="cantidad" value="#{adquisicion.cantidad}" title="#{mensajes.cantidad}" required="false" requiredMessage="#{mensajes.cantidad}"/>
+<h:outputLabel value="#{mensajes.detalle}" for="detalle" />
+<h:inputText id="detalle" value="#{adquisicion.detalle}" title="#{mensajes.detalle}" required="false" requiredMessage="#{mensajes.detalle}"/>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{adquisicion.fecha}" title="#{mensajes.fecha}" required="false" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{adquisicionController.Eliminar}" value="#{mensajes['boton.eliminar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.adquisicionEliminar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

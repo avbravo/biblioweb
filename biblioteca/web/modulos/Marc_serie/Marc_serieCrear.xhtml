@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.marc_serieCrear}">
+<center><h1>marc_serie Crear</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_serie}" for="id_serie" />
+<h:inputText id="id_serie" value="#{marc_serie.id_serie}" title="#{mensajes.id_serie}" required="true" requiredMessage="#{mensajes.id_serie}"/>
+<h:outputLabel value="#{mensajes.id_dato}" for="id_dato" />
+<h:selectOneMenu value="#{Marc_dato.id_dato}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{marc_serie.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{marc_serieController.Crear}" value="#{mensajes['boton.crear']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.marc_serieCrear}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

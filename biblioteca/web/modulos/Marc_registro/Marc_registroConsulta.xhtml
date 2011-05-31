@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.marc_registroConsulta}">
+<center><h1>marc_registro Consulta</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_registro}" for="id_registro" />
+<h:inputText id="id_registro" value="#{marc_registro.id_registro}" title="#{mensajes.id_registro}" required="true" requiredMessage="#{mensajes.id_registro}"/>
+<h:outputLabel value="#{mensajes.id_dato}" for="id_dato" />
+<h:selectOneMenu value="#{Marc_dato.id_dato}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_nivel}" for="id_nivel" />
+<h:inputText id="id_nivel" value="#{marc_registro.id_nivel}" title="#{mensajes.id_nivel}" required="true" requiredMessage="#{mensajes.id_nivel}"/>
+<h:outputLabel value="#{mensajes.id_etiqueta}" for="id_etiqueta" />
+<h:inputText id="id_etiqueta" value="#{marc_registro.id_etiqueta}" title="#{mensajes.id_etiqueta}" required="true" requiredMessage="#{mensajes.id_etiqueta}"/>
+<h:outputLabel value="#{mensajes.eti_padre}" for="eti_padre" />
+<h:inputText id="eti_padre" value="#{marc_registro.eti_padre}" title="#{mensajes.eti_padre}" required="true" requiredMessage="#{mensajes.eti_padre}"/>
+<h:outputLabel value="#{mensajes.descripcion}" for="descripcion" />
+<h:inputText id="descripcion" value="#{marc_registro.descripcion}" title="#{mensajes.descripcion}" required="false" requiredMessage="#{mensajes.descripcion}"/>
+<h:outputLabel value="#{mensajes.id_repetido}" for="id_repetido" />
+<h:inputText id="id_repetido" value="#{marc_registro.id_repetido}" title="#{mensajes.id_repetido}" required="false" requiredMessage="#{mensajes.id_repetido}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.marc_registroConsulta}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

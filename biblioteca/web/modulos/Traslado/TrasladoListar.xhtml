@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.trasladoListar}">
+<center><h1>traslado Listar</h1></center>
+<p:dataTable var="var" value="#{trasladoController.trasladolist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{trasladoController.selectedTraslado}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_traslado}" />
+     </f:facet>
+     <h:outputText value="#{var.id_traslado}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_usuario_ori}" />
+     </f:facet>
+     <h:outputText value="#{var.id_usuario_ori}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_usuario_des}" />
+     </f:facet>
+     <h:outputText value="#{var.id_usuario_des}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_sala_ori}" />
+     </f:facet>
+     <h:outputText value="#{var.id_sala_ori}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_sala_des}" />
+     </f:facet>
+     <h:outputText value="#{var.id_sala_des}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.id_ejemplar}" for="id_ejemplar" />
+<h:selectOneMenu value="#{Marc_ejemplar.id_ejemplar}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.fecha_ori}" for="fecha_ori" />
+<h:inputText id="fecha_ori" value="#{traslado.fecha_ori}" title="#{mensajes.fecha_ori}" required="true" requiredMessage="#{mensajes.fecha_ori}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_des}" for="fecha_des" />
+<h:inputText id="fecha_des" value="#{traslado.fecha_des}" title="#{mensajes.fecha_des}" required="false" requiredMessage="#{mensajes.fecha_des}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.temporal}" for="temporal" />
+<h:selectBooleanCheckbox value="#{temporal}"  width="5" height="5" required="false" requiredMessage="#{mensajes.temporal}" />
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{trasladoController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.trasladoListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Context>
+<Resource name="jdbc/gbi" auth="Container" type="javax.sql.DataSource"
+username="gbi" password="123GbI456" driverClassName="org.postgresql.Driver"
+url="jdbc:postgresql://localhost:5432/gbi?autoReconnect=true" maxActive="8" maxIdle="8" />
+</Context>

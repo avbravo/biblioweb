@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.proveedorEditar}">
+<center><h1>proveedor Editar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_proveedor}" for="id_proveedor" />
+<h:inputText id="id_proveedor" value="#{proveedor.id_proveedor}" title="#{mensajes.id_proveedor}" required="true" requiredMessage="#{mensajes.id_proveedor}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{proveedor.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+<h:outputLabel value="#{mensajes.telefono}" for="telefono" />
+<h:inputText id="telefono" value="#{proveedor.telefono}" title="#{mensajes.telefono}" required="false" requiredMessage="#{mensajes.telefono}"/>
+<h:outputLabel value="#{mensajes.email}" for="email" />
+<h:inputText id="email" value="#{proveedor.email}" title="#{mensajes.email}" required="false" requiredMessage="#{mensajes.email}"/>
+<h:outputLabel value="#{mensajes.fax}" for="fax" />
+<h:inputText id="fax" value="#{proveedor.fax}" title="#{mensajes.fax}" required="false" requiredMessage="#{mensajes.fax}"/>
+<h:outputLabel value="#{mensajes.direccion}" for="direccion" />
+<h:inputText id="direccion" value="#{proveedor.direccion}" title="#{mensajes.direccion}" required="false" requiredMessage="#{mensajes.direccion}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{proveedorController.Editar}" value="#{mensajes['boton.editar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.proveedorEditar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

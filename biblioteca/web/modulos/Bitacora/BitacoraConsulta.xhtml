@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.bitacoraConsulta}">
+<center><h1>bitacora Consulta</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_bitacora}" for="id_bitacora" />
+<h:inputText id="id_bitacora" value="#{bitacora.id_bitacora}" title="#{mensajes.id_bitacora}" required="true" requiredMessage="#{mensajes.id_bitacora}"/>
+<h:outputLabel value="#{mensajes.id_usuario}" for="id_usuario" />
+<h:selectOneMenu value="#{Usuario.id_usuario}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_modulo}" for="id_modulo" />
+<h:selectOneMenu value="#{Modulo.id_modulo}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_opcion}" for="id_opcion" />
+<h:selectOneMenu value="#{Opcion.id_opcion}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.registro}" for="registro" />
+<h:inputText id="registro" value="#{bitacora.registro}" title="#{mensajes.registro}" required="false" requiredMessage="#{mensajes.registro}"/>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{bitacora.fecha}" title="#{mensajes.fecha}" required="true" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.hora}" for="hora" />
+<h:inputText id="hora" value="#{bitacora.hora}" title="#{mensajes.hora}" required="true" requiredMessage="#{mensajes.hora}"/>
+<h:outputLabel value="#{mensajes.ip}" for="ip" />
+<h:inputText id="ip" value="#{bitacora.ip}" title="#{mensajes.ip}" required="false" requiredMessage="#{mensajes.ip}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.bitacoraConsulta}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>
