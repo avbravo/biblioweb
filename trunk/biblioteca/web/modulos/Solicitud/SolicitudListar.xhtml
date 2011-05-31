@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.solicitudListar}">
+<center><h1>solicitud Listar</h1></center>
+<p:dataTable var="var" value="#{solicitudController.solicitudlist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{solicitudController.selectedSolicitud}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_solicitud}" />
+     </f:facet>
+     <h:outputText value="#{var.id_solicitud}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.id_lector}" for="id_lector" />
+<h:selectOneMenu value="#{Lector.id_lector}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_servicio}" for="id_servicio" />
+<h:selectOneMenu value="#{Servicio.id_servicio}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_solest}" for="id_solest" />
+<h:selectOneMenu value="#{Solicitud_estatus.id_solest}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_ejemplar}" />
+     </f:facet>
+     <h:outputText value="#{var.id_ejemplar}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_usuario_sol}" />
+     </f:facet>
+     <h:outputText value="#{var.id_usuario_sol}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_usuario_dev}" />
+     </f:facet>
+     <h:outputText value="#{var.id_usuario_dev}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.fecha_solicitud}" for="fecha_solicitud" />
+<h:inputText id="fecha_solicitud" value="#{solicitud.fecha_solicitud}" title="#{mensajes.fecha_solicitud}" required="true" requiredMessage="#{mensajes.fecha_solicitud}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.hora_solicitud}" />
+     </f:facet>
+     <h:outputText value="#{var.hora_solicitud}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.fecha_asignada}" for="fecha_asignada" />
+<h:inputText id="fecha_asignada" value="#{solicitud.fecha_asignada}" title="#{mensajes.fecha_asignada}" required="false" requiredMessage="#{mensajes.fecha_asignada}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_devolucion}" for="fecha_devolucion" />
+<h:inputText id="fecha_devolucion" value="#{solicitud.fecha_devolucion}" title="#{mensajes.fecha_devolucion}" required="false" requiredMessage="#{mensajes.fecha_devolucion}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.hora_devolucion}" />
+     </f:facet>
+     <h:outputText value="#{var.hora_devolucion}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.observacion}" />
+     </f:facet>
+     <h:outputText value="#{var.observacion}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.moroso}" for="moroso" />
+<h:selectBooleanCheckbox value="#{moroso}"  width="5" height="5" required="false" requiredMessage="#{mensajes.moroso}" />
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.monto}" />
+     </f:facet>
+     <h:outputText value="#{var.monto}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.impreso}" for="impreso" />
+<h:selectBooleanCheckbox value="#{impreso}"  width="5" height="5" required="false" requiredMessage="#{mensajes.impreso}" />
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{solicitudController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.solicitudListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.servidorConsulta}">
+<center><h1>servidor Consulta</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_servidor}" for="id_servidor" />
+<h:inputText id="id_servidor" value="#{servidor.id_servidor}" title="#{mensajes.id_servidor}" required="true" requiredMessage="#{mensajes.id_servidor}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{servidor.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+<h:outputLabel value="#{mensajes.host}" for="host" />
+<h:inputText id="host" value="#{servidor.host}" title="#{mensajes.host}" required="true" requiredMessage="#{mensajes.host}"/>
+<h:outputLabel value="#{mensajes.basedato}" for="basedato" />
+<h:inputText id="basedato" value="#{servidor.basedato}" title="#{mensajes.basedato}" required="true" requiredMessage="#{mensajes.basedato}"/>
+<h:outputLabel value="#{mensajes.puerto}" for="puerto" />
+<h:inputText id="puerto" value="#{servidor.puerto}" title="#{mensajes.puerto}" required="true" requiredMessage="#{mensajes.puerto}"/>
+<h:outputLabel value="#{mensajes.usuario}" for="usuario" />
+<h:inputText id="usuario" value="#{servidor.usuario}" title="#{mensajes.usuario}" required="false" requiredMessage="#{mensajes.usuario}"/>
+<h:outputLabel value="#{mensajes.clave}" for="clave" />
+<h:inputText id="clave" value="#{servidor.clave}" title="#{mensajes.clave}" required="false" requiredMessage="#{mensajes.clave}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.servidorConsulta}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

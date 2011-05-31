@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.marc_datoEliminar}">
+<center><h1>marc_dato Eliminar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_dato}" for="id_dato" />
+<h:inputText id="id_dato" value="#{marc_dato.id_dato}" title="#{mensajes.id_dato}" required="true" requiredMessage="#{mensajes.id_dato}"/>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:inputText id="id_estatus" value="#{marc_dato.id_estatus}" title="#{mensajes.id_estatus}" required="false" requiredMessage="#{mensajes.id_estatus}"/>
+<h:outputLabel value="#{mensajes.id_usuario}" for="id_usuario" />
+<h:inputText id="id_usuario" value="#{marc_dato.id_usuario}" title="#{mensajes.id_usuario}" required="false" requiredMessage="#{mensajes.id_usuario}"/>
+<h:outputLabel value="#{mensajes.id_documento}" for="id_documento" />
+<h:inputText id="id_documento" value="#{marc_dato.id_documento}" title="#{mensajes.id_documento}" required="false" requiredMessage="#{mensajes.id_documento}"/>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{marc_dato.fecha}" title="#{mensajes.fecha}" required="false" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.impreso}" for="impreso" />
+<h:selectBooleanCheckbox value="#{impreso}"  width="5" height="5" required="false" requiredMessage="#{mensajes.impreso}" />
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{marc_datoController.Eliminar}" value="#{mensajes['boton.eliminar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.marc_datoEliminar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

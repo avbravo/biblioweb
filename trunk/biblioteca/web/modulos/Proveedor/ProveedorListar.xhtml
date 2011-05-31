@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.proveedorListar}">
+<center><h1>proveedor Listar</h1></center>
+<p:dataTable var="var" value="#{proveedorController.proveedorlist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{proveedorController.selectedProveedor}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_proveedor}" />
+     </f:facet>
+     <h:outputText value="#{var.id_proveedor}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.nombre}" />
+     </f:facet>
+     <h:outputText value="#{var.nombre}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.telefono}" />
+     </f:facet>
+     <h:outputText value="#{var.telefono}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.email}" />
+     </f:facet>
+     <h:outputText value="#{var.email}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.fax}" />
+     </f:facet>
+     <h:outputText value="#{var.fax}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.direccion}" />
+     </f:facet>
+     <h:outputText value="#{var.direccion}" />
+   </p:column>
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{proveedorController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.proveedorListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.anuncioListar}">
+<center><h1>anuncio Listar</h1></center>
+<p:dataTable var="var" value="#{anuncioController.anunciolist}" paginator="true"
+rows="20" dynamic="false or true"
+selection="#{anuncioController.selectedAnuncio}" selectionMode="single" 
+ update="display" >
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.id_anuncio}" />
+     </f:facet>
+     <h:outputText value="#{var.id_anuncio}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.id_usuario}" for="id_usuario" />
+<h:selectOneMenu value="#{Usuario.id_usuario}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.titulo}" />
+     </f:facet>
+     <h:outputText value="#{var.titulo}" />
+   </p:column>
+  <p:column >
+     <f:facet name="header">
+         <h:outputText value="#{mensajes.contenido}" />
+     </f:facet>
+     <h:outputText value="#{var.contenido}" />
+   </p:column>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{anuncio.fecha}" title="#{mensajes.fecha}" required="false" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_ini}" for="fecha_ini" />
+<h:inputText id="fecha_ini" value="#{anuncio.fecha_ini}" title="#{mensajes.fecha_ini}" required="false" requiredMessage="#{mensajes.fecha_ini}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_fin}" for="fecha_fin" />
+<h:inputText id="fecha_fin" value="#{anuncio.fecha_fin}" title="#{mensajes.fecha_fin}" required="false" requiredMessage="#{mensajes.fecha_fin}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+</p:dataTable>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{anuncioController.Listar}" value="#{mensajes['boton.listar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.anuncioListar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

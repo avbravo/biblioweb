@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.paisEditar}">
+<center><h1>pais Editar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_pais}" for="id_pais" />
+<h:inputText id="id_pais" value="#{pais.id_pais}" title="#{mensajes.id_pais}" required="true" requiredMessage="#{mensajes.id_pais}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{pais.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+<h:outputLabel value="#{mensajes.codigo_area}" for="codigo_area" />
+<h:inputText id="codigo_area" value="#{pais.codigo_area}" title="#{mensajes.codigo_area}" required="true" requiredMessage="#{mensajes.codigo_area}"/>
+<h:outputLabel value="#{mensajes.siglas}" for="siglas" />
+<h:inputText id="siglas" value="#{pais.siglas}" title="#{mensajes.siglas}" required="true" requiredMessage="#{mensajes.siglas}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{paisController.Editar}" value="#{mensajes['boton.editar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.paisEditar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

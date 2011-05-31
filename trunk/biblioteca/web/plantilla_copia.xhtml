@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/biblioteca/resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="/biblioteca/resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <f:loadBundle basename="org.biblioteca.properties.mensajes" var="mensajes" />
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+
+        <div id="top" class="top">
+            <h1>
+                <center>
+                    <h:outputText value="#{mensajes['titulo.aplicacion']}"/>
+                </center>
+            </h1>
+            <h:form id="formtoplogeado" rendered="#{loginBean.logeado}">
+                <h:panelGrid columns="6">
+                    <h:link outcome="/index.xhtml"  value="#{mensajes['boton.home']}"/>
+                    <h:outputText value="#{mensajes['login.username']}"/>
+                    <h:outputText value="#{loginBean.nombreUsuarioLogeado}"/>
+                    <h:commandLink actionListener="#{loginBean.logout}" value="#{mensajes['boton.logout']}"/>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form id="formtopnologeado" rendered="#{!loginBean.logeado}">
+                <h:panelGrid columns="3">
+                    <p:commandButton value="Login" onclick="dlg3.show();" type="button" />
+                </h:panelGrid>
+                <p:dialog header="Acceso" widgetVar="dlg3" showEffect="bounce" hideEffect="explode" width="400"
+                          height="200">  
+                    <h:panelGrid columns="2">
+
+                        <h:outputText value="#{mensajes['boton.ayuda']}"  ></h:outputText>
+                        <h:inputText value="#{loginBean.username}"  required="true" />
+                        <h:outputText value="#{mensajes['login.password']}"  ></h:outputText>
+                        <h:inputSecret value="#{loginBean.password}"  required="true" />
+                        <h:commandButton action="#{loginBean.VerificarLogin}" value="#{mensajes['boton.login']}"  />
+                    </h:panelGrid>
+                </p:dialog>
+
+                <p:growl id="messages"/> 
+            </h:form>
+
+
+            <h:form>
+                <p:menubar autoSubmenuDisplay="true">
+                    <p:submenu label="Interes" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Interes/InteresCrear.xhtml" rendered="#{menuBeans.interesCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Interes/InteresEditar.xhtml" rendered="#{menuBeans.interesEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Interes/InteresListar.xhtml" rendered="#{menuBeans.interesListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Interes/InteresConsulta.xhtml" rendered="#{menuBeans.interesConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Interes/InteresEliminar.xhtml" rendered="#{menuBeans.interesEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Servicio_biblioteca" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Servicio_biblioteca/Servicio_bibliotecaCrear.xhtml" rendered="#{menuBeans.servicio_bibliotecaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Servicio_biblioteca/Servicio_bibliotecaEditar.xhtml" rendered="#{menuBeans.servicio_bibliotecaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Servicio_biblioteca/Servicio_bibliotecaListar.xhtml" rendered="#{menuBeans.servicio_bibliotecaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Servicio_biblioteca/Servicio_bibliotecaConsulta.xhtml" rendered="#{menuBeans.servicio_bibliotecaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Servicio_biblioteca/Servicio_bibliotecaEliminar.xhtml" rendered="#{menuBeans.servicio_bibliotecaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Traslado" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Traslado/TrasladoCrear.xhtml" rendered="#{menuBeans.trasladoCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Traslado/TrasladoEditar.xhtml" rendered="#{menuBeans.trasladoEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Traslado/TrasladoListar.xhtml" rendered="#{menuBeans.trasladoListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Traslado/TrasladoConsulta.xhtml" rendered="#{menuBeans.trasladoConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Traslado/TrasladoEliminar.xhtml" rendered="#{menuBeans.trasladoEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Recomendacion" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Recomendacion/RecomendacionCrear.xhtml" rendered="#{menuBeans.recomendacionCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Recomendacion/RecomendacionEditar.xhtml" rendered="#{menuBeans.recomendacionEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Recomendacion/RecomendacionListar.xhtml" rendered="#{menuBeans.recomendacionListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Recomendacion/RecomendacionConsulta.xhtml" rendered="#{menuBeans.recomendacionConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Recomendacion/RecomendacionEliminar.xhtml" rendered="#{menuBeans.recomendacionEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Opcion" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Opcion/OpcionCrear.xhtml" rendered="#{menuBeans.opcionCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Opcion/OpcionEditar.xhtml" rendered="#{menuBeans.opcionEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Opcion/OpcionListar.xhtml" rendered="#{menuBeans.opcionListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Opcion/OpcionConsulta.xhtml" rendered="#{menuBeans.opcionConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Opcion/OpcionEliminar.xhtml" rendered="#{menuBeans.opcionEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Perfil" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Perfil/PerfilCrear.xhtml" rendered="#{menuBeans.perfilCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Perfil/PerfilEditar.xhtml" rendered="#{menuBeans.perfilEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Perfil/PerfilListar.xhtml" rendered="#{menuBeans.perfilListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Perfil/PerfilConsulta.xhtml" rendered="#{menuBeans.perfilConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Perfil/PerfilEliminar.xhtml" rendered="#{menuBeans.perfilEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Sala" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Sala/SalaCrear.xhtml" rendered="#{menuBeans.salaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Sala/SalaEditar.xhtml" rendered="#{menuBeans.salaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Sala/SalaListar.xhtml" rendered="#{menuBeans.salaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Sala/SalaConsulta.xhtml" rendered="#{menuBeans.salaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Sala/SalaEliminar.xhtml" rendered="#{menuBeans.salaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Url" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Url/UrlCrear.xhtml" rendered="#{menuBeans.urlCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Url/UrlEditar.xhtml" rendered="#{menuBeans.urlEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Url/UrlListar.xhtml" rendered="#{menuBeans.urlListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Url/UrlConsulta.xhtml" rendered="#{menuBeans.urlConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Url/UrlEliminar.xhtml" rendered="#{menuBeans.urlEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Solicitud" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Solicitud/SolicitudCrear.xhtml" rendered="#{menuBeans.solicitudCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Solicitud/SolicitudEditar.xhtml" rendered="#{menuBeans.solicitudEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Solicitud/SolicitudListar.xhtml" rendered="#{menuBeans.solicitudListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Solicitud/SolicitudConsulta.xhtml" rendered="#{menuBeans.solicitudConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Solicitud/SolicitudEliminar.xhtml" rendered="#{menuBeans.solicitudEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Cuenta" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Cuenta/CuentaCrear.xhtml" rendered="#{menuBeans.cuentaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Cuenta/CuentaEditar.xhtml" rendered="#{menuBeans.cuentaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Cuenta/CuentaListar.xhtml" rendered="#{menuBeans.cuentaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Cuenta/CuentaConsulta.xhtml" rendered="#{menuBeans.cuentaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Cuenta/CuentaEliminar.xhtml" rendered="#{menuBeans.cuentaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Proveedor" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Proveedor/ProveedorCrear.xhtml" rendered="#{menuBeans.proveedorCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Proveedor/ProveedorEditar.xhtml" rendered="#{menuBeans.proveedorEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Proveedor/ProveedorListar.xhtml" rendered="#{menuBeans.proveedorListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Proveedor/ProveedorConsulta.xhtml" rendered="#{menuBeans.proveedorConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Proveedor/ProveedorEliminar.xhtml" rendered="#{menuBeans.proveedorEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Institucion" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Institucion/InstitucionCrear.xhtml" rendered="#{menuBeans.institucionCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Institucion/InstitucionEditar.xhtml" rendered="#{menuBeans.institucionEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Institucion/InstitucionListar.xhtml" rendered="#{menuBeans.institucionListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Institucion/InstitucionConsulta.xhtml" rendered="#{menuBeans.institucionConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Institucion/InstitucionEliminar.xhtml" rendered="#{menuBeans.institucionEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Servicio" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Servicio/ServicioCrear.xhtml" rendered="#{menuBeans.servicioCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Servicio/ServicioEditar.xhtml" rendered="#{menuBeans.servicioEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Servicio/ServicioListar.xhtml" rendered="#{menuBeans.servicioListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Servicio/ServicioConsulta.xhtml" rendered="#{menuBeans.servicioConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Servicio/ServicioEliminar.xhtml" rendered="#{menuBeans.servicioEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Region" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Region/RegionCrear.xhtml" rendered="#{menuBeans.regionCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Region/RegionEditar.xhtml" rendered="#{menuBeans.regionEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Region/RegionListar.xhtml" rendered="#{menuBeans.regionListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Region/RegionConsulta.xhtml" rendered="#{menuBeans.regionConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Region/RegionEliminar.xhtml" rendered="#{menuBeans.regionEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Marc_analitica" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Marc_analitica/Marc_analiticaCrear.xhtml" rendered="#{menuBeans.marc_analiticaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Marc_analitica/Marc_analiticaEditar.xhtml" rendered="#{menuBeans.marc_analiticaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Marc_analitica/Marc_analiticaListar.xhtml" rendered="#{menuBeans.marc_analiticaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Marc_analitica/Marc_analiticaConsulta.xhtml" rendered="#{menuBeans.marc_analiticaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Marc_analitica/Marc_analiticaEliminar.xhtml" rendered="#{menuBeans.marc_analiticaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Dependencia" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Dependencia/DependenciaCrear.xhtml" rendered="#{menuBeans.dependenciaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Dependencia/DependenciaEditar.xhtml" rendered="#{menuBeans.dependenciaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Dependencia/DependenciaListar.xhtml" rendered="#{menuBeans.dependenciaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Dependencia/DependenciaConsulta.xhtml" rendered="#{menuBeans.dependenciaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Dependencia/DependenciaEliminar.xhtml" rendered="#{menuBeans.dependenciaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Documento" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Documento/DocumentoCrear.xhtml" rendered="#{menuBeans.documentoCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Documento/DocumentoEditar.xhtml" rendered="#{menuBeans.documentoEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Documento/DocumentoListar.xhtml" rendered="#{menuBeans.documentoListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Documento/DocumentoConsulta.xhtml" rendered="#{menuBeans.documentoConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Documento/DocumentoEliminar.xhtml" rendered="#{menuBeans.documentoEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Adquisicion" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Adquisicion/AdquisicionCrear.xhtml" rendered="#{menuBeans.adquisicionCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Adquisicion/AdquisicionEditar.xhtml" rendered="#{menuBeans.adquisicionEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Adquisicion/AdquisicionListar.xhtml" rendered="#{menuBeans.adquisicionListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Adquisicion/AdquisicionConsulta.xhtml" rendered="#{menuBeans.adquisicionConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Adquisicion/AdquisicionEliminar.xhtml" rendered="#{menuBeans.adquisicionEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Solicitud_estatus" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Solicitud_estatus/Solicitud_estatusCrear.xhtml" rendered="#{menuBeans.solicitud_estatusCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Solicitud_estatus/Solicitud_estatusEditar.xhtml" rendered="#{menuBeans.solicitud_estatusEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Solicitud_estatus/Solicitud_estatusListar.xhtml" rendered="#{menuBeans.solicitud_estatusListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Solicitud_estatus/Solicitud_estatusConsulta.xhtml" rendered="#{menuBeans.solicitud_estatusConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Solicitud_estatus/Solicitud_estatusEliminar.xhtml" rendered="#{menuBeans.solicitud_estatusEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Cuenta_tipo" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Cuenta_tipo/Cuenta_tipoCrear.xhtml" rendered="#{menuBeans.cuenta_tipoCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Cuenta_tipo/Cuenta_tipoEditar.xhtml" rendered="#{menuBeans.cuenta_tipoEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Cuenta_tipo/Cuenta_tipoListar.xhtml" rendered="#{menuBeans.cuenta_tipoListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Cuenta_tipo/Cuenta_tipoConsulta.xhtml" rendered="#{menuBeans.cuenta_tipoConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Cuenta_tipo/Cuenta_tipoEliminar.xhtml" rendered="#{menuBeans.cuenta_tipoEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Modulo" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Modulo/ModuloCrear.xhtml" rendered="#{menuBeans.moduloCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Modulo/ModuloEditar.xhtml" rendered="#{menuBeans.moduloEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Modulo/ModuloListar.xhtml" rendered="#{menuBeans.moduloListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Modulo/ModuloConsulta.xhtml" rendered="#{menuBeans.moduloConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Modulo/ModuloEliminar.xhtml" rendered="#{menuBeans.moduloEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Configurar" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Configurar/ConfigurarCrear.xhtml" rendered="#{menuBeans.configurarCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Configurar/ConfigurarEditar.xhtml" rendered="#{menuBeans.configurarEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Configurar/ConfigurarListar.xhtml" rendered="#{menuBeans.configurarListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Configurar/ConfigurarConsulta.xhtml" rendered="#{menuBeans.configurarConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Configurar/ConfigurarEliminar.xhtml" rendered="#{menuBeans.configurarEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Control" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Control/ControlCrear.xhtml" rendered="#{menuBeans.controlCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Control/ControlEditar.xhtml" rendered="#{menuBeans.controlEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Control/ControlListar.xhtml" rendered="#{menuBeans.controlListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Control/ControlConsulta.xhtml" rendered="#{menuBeans.controlConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Control/ControlEliminar.xhtml" rendered="#{menuBeans.controlEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Usuario" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Usuario/UsuarioCrear.xhtml" rendered="#{menuBeans.usuarioCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Usuario/UsuarioEditar.xhtml" rendered="#{menuBeans.usuarioEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Usuario/UsuarioListar.xhtml" rendered="#{menuBeans.usuarioListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Usuario/UsuarioConsulta.xhtml" rendered="#{menuBeans.usuarioConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Usuario/UsuarioEliminar.xhtml" rendered="#{menuBeans.usuarioEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Mensaje_usuario" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Mensaje_usuario/Mensaje_usuarioCrear.xhtml" rendered="#{menuBeans.mensaje_usuarioCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Mensaje_usuario/Mensaje_usuarioEditar.xhtml" rendered="#{menuBeans.mensaje_usuarioEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Mensaje_usuario/Mensaje_usuarioListar.xhtml" rendered="#{menuBeans.mensaje_usuarioListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Mensaje_usuario/Mensaje_usuarioConsulta.xhtml" rendered="#{menuBeans.mensaje_usuarioConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Mensaje_usuario/Mensaje_usuarioEliminar.xhtml" rendered="#{menuBeans.mensaje_usuarioEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Tema" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Tema/TemaCrear.xhtml" rendered="#{menuBeans.temaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Tema/TemaEditar.xhtml" rendered="#{menuBeans.temaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Tema/TemaListar.xhtml" rendered="#{menuBeans.temaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Tema/TemaConsulta.xhtml" rendered="#{menuBeans.temaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Tema/TemaEliminar.xhtml" rendered="#{menuBeans.temaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Marc_serie" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Marc_serie/Marc_serieCrear.xhtml" rendered="#{menuBeans.marc_serieCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Marc_serie/Marc_serieEditar.xhtml" rendered="#{menuBeans.marc_serieEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Marc_serie/Marc_serieListar.xhtml" rendered="#{menuBeans.marc_serieListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Marc_serie/Marc_serieConsulta.xhtml" rendered="#{menuBeans.marc_serieConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Marc_serie/Marc_serieEliminar.xhtml" rendered="#{menuBeans.marc_serieEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Mensaje" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Mensaje/MensajeCrear.xhtml" rendered="#{menuBeans.mensajeCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Mensaje/MensajeEditar.xhtml" rendered="#{menuBeans.mensajeEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Mensaje/MensajeListar.xhtml" rendered="#{menuBeans.mensajeListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Mensaje/MensajeConsulta.xhtml" rendered="#{menuBeans.mensajeConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Mensaje/MensajeEliminar.xhtml" rendered="#{menuBeans.mensajeEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Marc_ejemplar" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Marc_ejemplar/Marc_ejemplarCrear.xhtml" rendered="#{menuBeans.marc_ejemplarCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Marc_ejemplar/Marc_ejemplarEditar.xhtml" rendered="#{menuBeans.marc_ejemplarEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Marc_ejemplar/Marc_ejemplarListar.xhtml" rendered="#{menuBeans.marc_ejemplarListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Marc_ejemplar/Marc_ejemplarConsulta.xhtml" rendered="#{menuBeans.marc_ejemplarConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Marc_ejemplar/Marc_ejemplarEliminar.xhtml" rendered="#{menuBeans.marc_ejemplarEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Bitacora" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Bitacora/BitacoraCrear.xhtml" rendered="#{menuBeans.bitacoraCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Bitacora/BitacoraEditar.xhtml" rendered="#{menuBeans.bitacoraEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Bitacora/BitacoraListar.xhtml" rendered="#{menuBeans.bitacoraListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Bitacora/BitacoraConsulta.xhtml" rendered="#{menuBeans.bitacoraConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Bitacora/BitacoraEliminar.xhtml" rendered="#{menuBeans.bitacoraEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Usu_mod_opc" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Usu_mod_opc/Usu_mod_opcCrear.xhtml" rendered="#{menuBeans.usu_mod_opcCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Usu_mod_opc/Usu_mod_opcEditar.xhtml" rendered="#{menuBeans.usu_mod_opcEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Usu_mod_opc/Usu_mod_opcListar.xhtml" rendered="#{menuBeans.usu_mod_opcListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Usu_mod_opc/Usu_mod_opcConsulta.xhtml" rendered="#{menuBeans.usu_mod_opcConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Usu_mod_opc/Usu_mod_opcEliminar.xhtml" rendered="#{menuBeans.usu_mod_opcEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Marc_dato" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Marc_dato/Marc_datoCrear.xhtml" rendered="#{menuBeans.marc_datoCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Marc_dato/Marc_datoEditar.xhtml" rendered="#{menuBeans.marc_datoEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Marc_dato/Marc_datoListar.xhtml" rendered="#{menuBeans.marc_datoListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Marc_dato/Marc_datoConsulta.xhtml" rendered="#{menuBeans.marc_datoConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Marc_dato/Marc_datoEliminar.xhtml" rendered="#{menuBeans.marc_datoEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Servidor" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Servidor/ServidorCrear.xhtml" rendered="#{menuBeans.servidorCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Servidor/ServidorEditar.xhtml" rendered="#{menuBeans.servidorEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Servidor/ServidorListar.xhtml" rendered="#{menuBeans.servidorListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Servidor/ServidorConsulta.xhtml" rendered="#{menuBeans.servidorConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Servidor/ServidorEliminar.xhtml" rendered="#{menuBeans.servidorEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Lector" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Lector/LectorCrear.xhtml" rendered="#{menuBeans.lectorCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Lector/LectorEditar.xhtml" rendered="#{menuBeans.lectorEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Lector/LectorListar.xhtml" rendered="#{menuBeans.lectorListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Lector/LectorConsulta.xhtml" rendered="#{menuBeans.lectorConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Lector/LectorEliminar.xhtml" rendered="#{menuBeans.lectorEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Estatus" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Estatus/EstatusCrear.xhtml" rendered="#{menuBeans.estatusCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Estatus/EstatusEditar.xhtml" rendered="#{menuBeans.estatusEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Estatus/EstatusListar.xhtml" rendered="#{menuBeans.estatusListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Estatus/EstatusConsulta.xhtml" rendered="#{menuBeans.estatusConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Estatus/EstatusEliminar.xhtml" rendered="#{menuBeans.estatusEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Biblioteca" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Biblioteca/BibliotecaCrear.xhtml" rendered="#{menuBeans.bibliotecaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Biblioteca/BibliotecaEditar.xhtml" rendered="#{menuBeans.bibliotecaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Biblioteca/BibliotecaListar.xhtml" rendered="#{menuBeans.bibliotecaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Biblioteca/BibliotecaConsulta.xhtml" rendered="#{menuBeans.bibliotecaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Biblioteca/BibliotecaEliminar.xhtml" rendered="#{menuBeans.bibliotecaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Anuncio" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Anuncio/AnuncioCrear.xhtml" rendered="#{menuBeans.anuncioCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Anuncio/AnuncioEditar.xhtml" rendered="#{menuBeans.anuncioEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Anuncio/AnuncioListar.xhtml" rendered="#{menuBeans.anuncioListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Anuncio/AnuncioConsulta.xhtml" rendered="#{menuBeans.anuncioConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Anuncio/AnuncioEliminar.xhtml" rendered="#{menuBeans.anuncioEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Marc_registro" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Marc_registro/Marc_registroCrear.xhtml" rendered="#{menuBeans.marc_registroCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Marc_registro/Marc_registroEditar.xhtml" rendered="#{menuBeans.marc_registroEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Marc_registro/Marc_registroListar.xhtml" rendered="#{menuBeans.marc_registroListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Marc_registro/Marc_registroConsulta.xhtml" rendered="#{menuBeans.marc_registroConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Marc_registro/Marc_registroEliminar.xhtml" rendered="#{menuBeans.marc_registroEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Frecuencia" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Frecuencia/FrecuenciaCrear.xhtml" rendered="#{menuBeans.frecuenciaCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Frecuencia/FrecuenciaEditar.xhtml" rendered="#{menuBeans.frecuenciaEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Frecuencia/FrecuenciaListar.xhtml" rendered="#{menuBeans.frecuenciaListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Frecuencia/FrecuenciaConsulta.xhtml" rendered="#{menuBeans.frecuenciaConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Frecuencia/FrecuenciaEliminar.xhtml" rendered="#{menuBeans.frecuenciaEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="Pais" > 
+                        <p:menuitem value="Crear" url="/faces/modulos/Pais/PaisCrear.xhtml" rendered="#{menuBeans.paisCrear}"/>
+                        <p:menuitem value="Editar" url="/faces/modulos/Pais/PaisEditar.xhtml" rendered="#{menuBeans.paisEditar}"/>
+                        <p:menuitem value="Listar" url="/faces/modulos/Pais/PaisListar.xhtml" rendered="#{menuBeans.paisListar}"/>
+                        <p:menuitem value="Consulta" url="/faces/modulos/Pais/PaisConsulta.xhtml" rendered="#{menuBeans.paisConsulta}"/>
+                        <p:menuitem value="Eliminar" url="/faces/modulos/Pais/PaisEliminar.xhtml" rendered="#{menuBeans.paisEliminar}"/>
+                    </p:submenu>
+                    <p:submenu label="#{mensajes['boton.buscar']}" icon="ui-icon ui-icon-search"> 
+                        <p:menuitem value="Contents" url="#" />  
+                        <p:submenu label="Search" icon="ui-icon ui-icon-search"> 
+                            <p:submenu label="Text"> 
+                                <p:menuitem value="Workspace" url="#" /> 
+                            </p:submenu>  
+                            <p:menuitem value="File" url="#" />  
+                        </p:submenu>  
+                    </p:submenu>  
+                    <p:submenu label="#{mensajes['boton.ayuda']}" icon="ui-icon ui-icon-help"> 
+                        <p:menuitem value="Contents" url="#" />  
+                        <p:submenu label="Search" icon="ui-icon ui-icon-search"> 
+                            <p:submenu label="Text"> 
+                                <p:menuitem value="Workspace" url="#" /> 
+                            </p:submenu>  
+                            <p:menuitem value="File" url="#" />  
+                        </p:submenu>  
+                    </p:submenu>  
+                </p:menubar>
+            </h:form>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <h:panelGrid columns="1">
+                        <h:outputLink value="http://site.ebrary.com/lib/utpanama" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/ebrary.jpg" width="30" height="30"/>
+                            <h:outputText value="Base de datos de Ebrary"/> 
+                        </h:outputLink>
+                        <h:outputLink value="http://proquest.safaribooksonline.com/?uicode=utppanama" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/safari.jpg" width="30" height="30"/>
+                            <h:outputText value="Bases de datos de Safari"/> 
+                        </h:outputLink>   
+                        <h:outputLink value="http://site.ebrary.com/lib/utpsp" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/elibro.jpg" width="30" height="30"/>
+                            <h:outputText value="Bases de datos de Elibro"/> 
+                        </h:outputLink>   
+                        <h:outputLink value="http://search.proquest.com" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/proquest.jpg" width="30" height="30"/>
+                            <h:outputText value="Bases de datos de Proquest"/> 
+                        </h:outputLink>   
+                        
+                         <h:outputLink value="http://www.refworks.com/refworks" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/refworks.gif" width="30" height="30"/>
+                            <h:outputText value="Administrador de Citas Bibliograficas RefWorks"/> 
+                        </h:outputLink>   
+                        
+                        <h:outputLink value="http://www.springerlink.com/" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/springerlink.gif" width="30" height="30"/>
+                            <h:outputText value="Bases de datos SpringerLink"/> 
+                        </h:outputLink>   
+                            <h:outputLink value="http://search.ebscohost.com/login.aspx?authtype=uid" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/ebsco.jpg" width="30" height="30"/>
+                            <h:outputText value="Bases de datos EBSCO"/> 
+                        </h:outputLink>   
+                            <h:outputLink value="http://senacyt.gob.pa.etechspace.net" styleClass="servicio" target="_blank">
+                            <h:graphicImage value="/resources/imagenes/databases/senacyt.jpg" width="30" height="30"/>
+                            <h:outputText value="SENACYT"/> 
+                        </h:outputLink>   
+                    </h:panelGrid>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>

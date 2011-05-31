@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.solicitudCrear}">
+<center><h1>solicitud Crear</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_solicitud}" for="id_solicitud" />
+<h:inputText id="id_solicitud" value="#{solicitud.id_solicitud}" title="#{mensajes.id_solicitud}" required="true" requiredMessage="#{mensajes.id_solicitud}"/>
+<h:outputLabel value="#{mensajes.id_lector}" for="id_lector" />
+<h:selectOneMenu value="#{Lector.id_lector}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_servicio}" for="id_servicio" />
+<h:selectOneMenu value="#{Servicio.id_servicio}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_solest}" for="id_solest" />
+<h:selectOneMenu value="#{Solicitud_estatus.id_solest}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_ejemplar}" for="id_ejemplar" />
+<h:inputText id="id_ejemplar" value="#{solicitud.id_ejemplar}" title="#{mensajes.id_ejemplar}" required="true" requiredMessage="#{mensajes.id_ejemplar}"/>
+<h:outputLabel value="#{mensajes.id_usuario_sol}" for="id_usuario_sol" />
+<h:inputText id="id_usuario_sol" value="#{solicitud.id_usuario_sol}" title="#{mensajes.id_usuario_sol}" required="false" requiredMessage="#{mensajes.id_usuario_sol}"/>
+<h:outputLabel value="#{mensajes.id_usuario_dev}" for="id_usuario_dev" />
+<h:inputText id="id_usuario_dev" value="#{solicitud.id_usuario_dev}" title="#{mensajes.id_usuario_dev}" required="false" requiredMessage="#{mensajes.id_usuario_dev}"/>
+<h:outputLabel value="#{mensajes.fecha_solicitud}" for="fecha_solicitud" />
+<h:inputText id="fecha_solicitud" value="#{solicitud.fecha_solicitud}" title="#{mensajes.fecha_solicitud}" required="true" requiredMessage="#{mensajes.fecha_solicitud}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.hora_solicitud}" for="hora_solicitud" />
+<h:inputText id="hora_solicitud" value="#{solicitud.hora_solicitud}" title="#{mensajes.hora_solicitud}" required="true" requiredMessage="#{mensajes.hora_solicitud}"/>
+<h:outputLabel value="#{mensajes.fecha_asignada}" for="fecha_asignada" />
+<h:inputText id="fecha_asignada" value="#{solicitud.fecha_asignada}" title="#{mensajes.fecha_asignada}" required="false" requiredMessage="#{mensajes.fecha_asignada}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.fecha_devolucion}" for="fecha_devolucion" />
+<h:inputText id="fecha_devolucion" value="#{solicitud.fecha_devolucion}" title="#{mensajes.fecha_devolucion}" required="false" requiredMessage="#{mensajes.fecha_devolucion}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.hora_devolucion}" for="hora_devolucion" />
+<h:inputText id="hora_devolucion" value="#{solicitud.hora_devolucion}" title="#{mensajes.hora_devolucion}" required="false" requiredMessage="#{mensajes.hora_devolucion}"/>
+<h:outputLabel value="#{mensajes.observacion}" for="observacion" />
+<h:inputText id="observacion" value="#{solicitud.observacion}" title="#{mensajes.observacion}" required="false" requiredMessage="#{mensajes.observacion}"/>
+<h:outputLabel value="#{mensajes.moroso}" for="moroso" />
+<h:selectBooleanCheckbox value="#{moroso}"  width="5" height="5" required="false" requiredMessage="#{mensajes.moroso}" />
+<h:outputLabel value="#{mensajes.monto}" for="monto" />
+<h:inputText id="monto" value="#{solicitud.monto}" title="#{mensajes.monto}" required="false" requiredMessage="#{mensajes.monto}"/>
+<h:outputLabel value="#{mensajes.impreso}" for="impreso" />
+<h:selectBooleanCheckbox value="#{impreso}"  width="5" height="5" required="false" requiredMessage="#{mensajes.impreso}" />
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{solicitudController.Crear}" value="#{mensajes['boton.crear']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.solicitudCrear}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

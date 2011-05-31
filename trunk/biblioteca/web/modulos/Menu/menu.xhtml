@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{loginBean.logeado}">
+<center><h1> MENU</h1></center>
+<h:panelGrid columns="2">
+
+<h:link outcome="/modulos/Interes/InteresCrear.xhtml" value="interesCrear" rendered="#{menuBeans.interesCrear}"></h:link>
+<h:link outcome="/modulos/Interes/InteresEditar.xhtml" value="interesEditar" rendered="#{menuBeans.interesEditar}"></h:link>
+<h:link outcome="/modulos/Interes/InteresListar.xhtml" value="interesListar" rendered="#{menuBeans.interesListar}"></h:link>
+<h:link outcome="/modulos/Interes/InteresConsulta.xhtml" value="interesConsulta" rendered="#{menuBeans.interesConsulta}"></h:link>
+<h:link outcome="/modulos/Interes/InteresEliminar.xhtml" value="interesEliminar" rendered="#{menuBeans.interesEliminar}"></h:link>
+<h:link outcome="/modulos/Servicio_biblioteca/Servicio_bibliotecaCrear.xhtml" value="servicio_bibliotecaCrear" rendered="#{menuBeans.servicio_bibliotecaCrear}"></h:link>
+<h:link outcome="/modulos/Servicio_biblioteca/Servicio_bibliotecaEditar.xhtml" value="servicio_bibliotecaEditar" rendered="#{menuBeans.servicio_bibliotecaEditar}"></h:link>
+<h:link outcome="/modulos/Servicio_biblioteca/Servicio_bibliotecaListar.xhtml" value="servicio_bibliotecaListar" rendered="#{menuBeans.servicio_bibliotecaListar}"></h:link>
+<h:link outcome="/modulos/Servicio_biblioteca/Servicio_bibliotecaConsulta.xhtml" value="servicio_bibliotecaConsulta" rendered="#{menuBeans.servicio_bibliotecaConsulta}"></h:link>
+<h:link outcome="/modulos/Servicio_biblioteca/Servicio_bibliotecaEliminar.xhtml" value="servicio_bibliotecaEliminar" rendered="#{menuBeans.servicio_bibliotecaEliminar}"></h:link>
+<h:link outcome="/modulos/Traslado/TrasladoCrear.xhtml" value="trasladoCrear" rendered="#{menuBeans.trasladoCrear}"></h:link>
+<h:link outcome="/modulos/Traslado/TrasladoEditar.xhtml" value="trasladoEditar" rendered="#{menuBeans.trasladoEditar}"></h:link>
+<h:link outcome="/modulos/Traslado/TrasladoListar.xhtml" value="trasladoListar" rendered="#{menuBeans.trasladoListar}"></h:link>
+<h:link outcome="/modulos/Traslado/TrasladoConsulta.xhtml" value="trasladoConsulta" rendered="#{menuBeans.trasladoConsulta}"></h:link>
+<h:link outcome="/modulos/Traslado/TrasladoEliminar.xhtml" value="trasladoEliminar" rendered="#{menuBeans.trasladoEliminar}"></h:link>
+<h:link outcome="/modulos/Recomendacion/RecomendacionCrear.xhtml" value="recomendacionCrear" rendered="#{menuBeans.recomendacionCrear}"></h:link>
+<h:link outcome="/modulos/Recomendacion/RecomendacionEditar.xhtml" value="recomendacionEditar" rendered="#{menuBeans.recomendacionEditar}"></h:link>
+<h:link outcome="/modulos/Recomendacion/RecomendacionListar.xhtml" value="recomendacionListar" rendered="#{menuBeans.recomendacionListar}"></h:link>
+<h:link outcome="/modulos/Recomendacion/RecomendacionConsulta.xhtml" value="recomendacionConsulta" rendered="#{menuBeans.recomendacionConsulta}"></h:link>
+<h:link outcome="/modulos/Recomendacion/RecomendacionEliminar.xhtml" value="recomendacionEliminar" rendered="#{menuBeans.recomendacionEliminar}"></h:link>
+<h:link outcome="/modulos/Opcion/OpcionCrear.xhtml" value="opcionCrear" rendered="#{menuBeans.opcionCrear}"></h:link>
+<h:link outcome="/modulos/Opcion/OpcionEditar.xhtml" value="opcionEditar" rendered="#{menuBeans.opcionEditar}"></h:link>
+<h:link outcome="/modulos/Opcion/OpcionListar.xhtml" value="opcionListar" rendered="#{menuBeans.opcionListar}"></h:link>
+<h:link outcome="/modulos/Opcion/OpcionConsulta.xhtml" value="opcionConsulta" rendered="#{menuBeans.opcionConsulta}"></h:link>
+<h:link outcome="/modulos/Opcion/OpcionEliminar.xhtml" value="opcionEliminar" rendered="#{menuBeans.opcionEliminar}"></h:link>
+<h:link outcome="/modulos/Perfil/PerfilCrear.xhtml" value="perfilCrear" rendered="#{menuBeans.perfilCrear}"></h:link>
+<h:link outcome="/modulos/Perfil/PerfilEditar.xhtml" value="perfilEditar" rendered="#{menuBeans.perfilEditar}"></h:link>
+<h:link outcome="/modulos/Perfil/PerfilListar.xhtml" value="perfilListar" rendered="#{menuBeans.perfilListar}"></h:link>
+<h:link outcome="/modulos/Perfil/PerfilConsulta.xhtml" value="perfilConsulta" rendered="#{menuBeans.perfilConsulta}"></h:link>
+<h:link outcome="/modulos/Perfil/PerfilEliminar.xhtml" value="perfilEliminar" rendered="#{menuBeans.perfilEliminar}"></h:link>
+<h:link outcome="/modulos/Sala/SalaCrear.xhtml" value="salaCrear" rendered="#{menuBeans.salaCrear}"></h:link>
+<h:link outcome="/modulos/Sala/SalaEditar.xhtml" value="salaEditar" rendered="#{menuBeans.salaEditar}"></h:link>
+<h:link outcome="/modulos/Sala/SalaListar.xhtml" value="salaListar" rendered="#{menuBeans.salaListar}"></h:link>
+<h:link outcome="/modulos/Sala/SalaConsulta.xhtml" value="salaConsulta" rendered="#{menuBeans.salaConsulta}"></h:link>
+<h:link outcome="/modulos/Sala/SalaEliminar.xhtml" value="salaEliminar" rendered="#{menuBeans.salaEliminar}"></h:link>
+<h:link outcome="/modulos/Url/UrlCrear.xhtml" value="urlCrear" rendered="#{menuBeans.urlCrear}"></h:link>
+<h:link outcome="/modulos/Url/UrlEditar.xhtml" value="urlEditar" rendered="#{menuBeans.urlEditar}"></h:link>
+<h:link outcome="/modulos/Url/UrlListar.xhtml" value="urlListar" rendered="#{menuBeans.urlListar}"></h:link>
+<h:link outcome="/modulos/Url/UrlConsulta.xhtml" value="urlConsulta" rendered="#{menuBeans.urlConsulta}"></h:link>
+<h:link outcome="/modulos/Url/UrlEliminar.xhtml" value="urlEliminar" rendered="#{menuBeans.urlEliminar}"></h:link>
+<h:link outcome="/modulos/Solicitud/SolicitudCrear.xhtml" value="solicitudCrear" rendered="#{menuBeans.solicitudCrear}"></h:link>
+<h:link outcome="/modulos/Solicitud/SolicitudEditar.xhtml" value="solicitudEditar" rendered="#{menuBeans.solicitudEditar}"></h:link>
+<h:link outcome="/modulos/Solicitud/SolicitudListar.xhtml" value="solicitudListar" rendered="#{menuBeans.solicitudListar}"></h:link>
+<h:link outcome="/modulos/Solicitud/SolicitudConsulta.xhtml" value="solicitudConsulta" rendered="#{menuBeans.solicitudConsulta}"></h:link>
+<h:link outcome="/modulos/Solicitud/SolicitudEliminar.xhtml" value="solicitudEliminar" rendered="#{menuBeans.solicitudEliminar}"></h:link>
+<h:link outcome="/modulos/Cuenta/CuentaCrear.xhtml" value="cuentaCrear" rendered="#{menuBeans.cuentaCrear}"></h:link>
+<h:link outcome="/modulos/Cuenta/CuentaEditar.xhtml" value="cuentaEditar" rendered="#{menuBeans.cuentaEditar}"></h:link>
+<h:link outcome="/modulos/Cuenta/CuentaListar.xhtml" value="cuentaListar" rendered="#{menuBeans.cuentaListar}"></h:link>
+<h:link outcome="/modulos/Cuenta/CuentaConsulta.xhtml" value="cuentaConsulta" rendered="#{menuBeans.cuentaConsulta}"></h:link>
+<h:link outcome="/modulos/Cuenta/CuentaEliminar.xhtml" value="cuentaEliminar" rendered="#{menuBeans.cuentaEliminar}"></h:link>
+<h:link outcome="/modulos/Proveedor/ProveedorCrear.xhtml" value="proveedorCrear" rendered="#{menuBeans.proveedorCrear}"></h:link>
+<h:link outcome="/modulos/Proveedor/ProveedorEditar.xhtml" value="proveedorEditar" rendered="#{menuBeans.proveedorEditar}"></h:link>
+<h:link outcome="/modulos/Proveedor/ProveedorListar.xhtml" value="proveedorListar" rendered="#{menuBeans.proveedorListar}"></h:link>
+<h:link outcome="/modulos/Proveedor/ProveedorConsulta.xhtml" value="proveedorConsulta" rendered="#{menuBeans.proveedorConsulta}"></h:link>
+<h:link outcome="/modulos/Proveedor/ProveedorEliminar.xhtml" value="proveedorEliminar" rendered="#{menuBeans.proveedorEliminar}"></h:link>
+<h:link outcome="/modulos/Institucion/InstitucionCrear.xhtml" value="institucionCrear" rendered="#{menuBeans.institucionCrear}"></h:link>
+<h:link outcome="/modulos/Institucion/InstitucionEditar.xhtml" value="institucionEditar" rendered="#{menuBeans.institucionEditar}"></h:link>
+<h:link outcome="/modulos/Institucion/InstitucionListar.xhtml" value="institucionListar" rendered="#{menuBeans.institucionListar}"></h:link>
+<h:link outcome="/modulos/Institucion/InstitucionConsulta.xhtml" value="institucionConsulta" rendered="#{menuBeans.institucionConsulta}"></h:link>
+<h:link outcome="/modulos/Institucion/InstitucionEliminar.xhtml" value="institucionEliminar" rendered="#{menuBeans.institucionEliminar}"></h:link>
+<h:link outcome="/modulos/Servicio/ServicioCrear.xhtml" value="servicioCrear" rendered="#{menuBeans.servicioCrear}"></h:link>
+<h:link outcome="/modulos/Servicio/ServicioEditar.xhtml" value="servicioEditar" rendered="#{menuBeans.servicioEditar}"></h:link>
+<h:link outcome="/modulos/Servicio/ServicioListar.xhtml" value="servicioListar" rendered="#{menuBeans.servicioListar}"></h:link>
+<h:link outcome="/modulos/Servicio/ServicioConsulta.xhtml" value="servicioConsulta" rendered="#{menuBeans.servicioConsulta}"></h:link>
+<h:link outcome="/modulos/Servicio/ServicioEliminar.xhtml" value="servicioEliminar" rendered="#{menuBeans.servicioEliminar}"></h:link>
+<h:link outcome="/modulos/Region/RegionCrear.xhtml" value="regionCrear" rendered="#{menuBeans.regionCrear}"></h:link>
+<h:link outcome="/modulos/Region/RegionEditar.xhtml" value="regionEditar" rendered="#{menuBeans.regionEditar}"></h:link>
+<h:link outcome="/modulos/Region/RegionListar.xhtml" value="regionListar" rendered="#{menuBeans.regionListar}"></h:link>
+<h:link outcome="/modulos/Region/RegionConsulta.xhtml" value="regionConsulta" rendered="#{menuBeans.regionConsulta}"></h:link>
+<h:link outcome="/modulos/Region/RegionEliminar.xhtml" value="regionEliminar" rendered="#{menuBeans.regionEliminar}"></h:link>
+<h:link outcome="/modulos/Marc_analitica/Marc_analiticaCrear.xhtml" value="marc_analiticaCrear" rendered="#{menuBeans.marc_analiticaCrear}"></h:link>
+<h:link outcome="/modulos/Marc_analitica/Marc_analiticaEditar.xhtml" value="marc_analiticaEditar" rendered="#{menuBeans.marc_analiticaEditar}"></h:link>
+<h:link outcome="/modulos/Marc_analitica/Marc_analiticaListar.xhtml" value="marc_analiticaListar" rendered="#{menuBeans.marc_analiticaListar}"></h:link>
+<h:link outcome="/modulos/Marc_analitica/Marc_analiticaConsulta.xhtml" value="marc_analiticaConsulta" rendered="#{menuBeans.marc_analiticaConsulta}"></h:link>
+<h:link outcome="/modulos/Marc_analitica/Marc_analiticaEliminar.xhtml" value="marc_analiticaEliminar" rendered="#{menuBeans.marc_analiticaEliminar}"></h:link>
+<h:link outcome="/modulos/Dependencia/DependenciaCrear.xhtml" value="dependenciaCrear" rendered="#{menuBeans.dependenciaCrear}"></h:link>
+<h:link outcome="/modulos/Dependencia/DependenciaEditar.xhtml" value="dependenciaEditar" rendered="#{menuBeans.dependenciaEditar}"></h:link>
+<h:link outcome="/modulos/Dependencia/DependenciaListar.xhtml" value="dependenciaListar" rendered="#{menuBeans.dependenciaListar}"></h:link>
+<h:link outcome="/modulos/Dependencia/DependenciaConsulta.xhtml" value="dependenciaConsulta" rendered="#{menuBeans.dependenciaConsulta}"></h:link>
+<h:link outcome="/modulos/Dependencia/DependenciaEliminar.xhtml" value="dependenciaEliminar" rendered="#{menuBeans.dependenciaEliminar}"></h:link>
+<h:link outcome="/modulos/Documento/DocumentoCrear.xhtml" value="documentoCrear" rendered="#{menuBeans.documentoCrear}"></h:link>
+<h:link outcome="/modulos/Documento/DocumentoEditar.xhtml" value="documentoEditar" rendered="#{menuBeans.documentoEditar}"></h:link>
+<h:link outcome="/modulos/Documento/DocumentoListar.xhtml" value="documentoListar" rendered="#{menuBeans.documentoListar}"></h:link>
+<h:link outcome="/modulos/Documento/DocumentoConsulta.xhtml" value="documentoConsulta" rendered="#{menuBeans.documentoConsulta}"></h:link>
+<h:link outcome="/modulos/Documento/DocumentoEliminar.xhtml" value="documentoEliminar" rendered="#{menuBeans.documentoEliminar}"></h:link>
+<h:link outcome="/modulos/Adquisicion/AdquisicionCrear.xhtml" value="adquisicionCrear" rendered="#{menuBeans.adquisicionCrear}"></h:link>
+<h:link outcome="/modulos/Adquisicion/AdquisicionEditar.xhtml" value="adquisicionEditar" rendered="#{menuBeans.adquisicionEditar}"></h:link>
+<h:link outcome="/modulos/Adquisicion/AdquisicionListar.xhtml" value="adquisicionListar" rendered="#{menuBeans.adquisicionListar}"></h:link>
+<h:link outcome="/modulos/Adquisicion/AdquisicionConsulta.xhtml" value="adquisicionConsulta" rendered="#{menuBeans.adquisicionConsulta}"></h:link>
+<h:link outcome="/modulos/Adquisicion/AdquisicionEliminar.xhtml" value="adquisicionEliminar" rendered="#{menuBeans.adquisicionEliminar}"></h:link>
+<h:link outcome="/modulos/Solicitud_estatus/Solicitud_estatusCrear.xhtml" value="solicitud_estatusCrear" rendered="#{menuBeans.solicitud_estatusCrear}"></h:link>
+<h:link outcome="/modulos/Solicitud_estatus/Solicitud_estatusEditar.xhtml" value="solicitud_estatusEditar" rendered="#{menuBeans.solicitud_estatusEditar}"></h:link>
+<h:link outcome="/modulos/Solicitud_estatus/Solicitud_estatusListar.xhtml" value="solicitud_estatusListar" rendered="#{menuBeans.solicitud_estatusListar}"></h:link>
+<h:link outcome="/modulos/Solicitud_estatus/Solicitud_estatusConsulta.xhtml" value="solicitud_estatusConsulta" rendered="#{menuBeans.solicitud_estatusConsulta}"></h:link>
+<h:link outcome="/modulos/Solicitud_estatus/Solicitud_estatusEliminar.xhtml" value="solicitud_estatusEliminar" rendered="#{menuBeans.solicitud_estatusEliminar}"></h:link>
+<h:link outcome="/modulos/Cuenta_tipo/Cuenta_tipoCrear.xhtml" value="cuenta_tipoCrear" rendered="#{menuBeans.cuenta_tipoCrear}"></h:link>
+<h:link outcome="/modulos/Cuenta_tipo/Cuenta_tipoEditar.xhtml" value="cuenta_tipoEditar" rendered="#{menuBeans.cuenta_tipoEditar}"></h:link>
+<h:link outcome="/modulos/Cuenta_tipo/Cuenta_tipoListar.xhtml" value="cuenta_tipoListar" rendered="#{menuBeans.cuenta_tipoListar}"></h:link>
+<h:link outcome="/modulos/Cuenta_tipo/Cuenta_tipoConsulta.xhtml" value="cuenta_tipoConsulta" rendered="#{menuBeans.cuenta_tipoConsulta}"></h:link>
+<h:link outcome="/modulos/Cuenta_tipo/Cuenta_tipoEliminar.xhtml" value="cuenta_tipoEliminar" rendered="#{menuBeans.cuenta_tipoEliminar}"></h:link>
+<h:link outcome="/modulos/Modulo/ModuloCrear.xhtml" value="moduloCrear" rendered="#{menuBeans.moduloCrear}"></h:link>
+<h:link outcome="/modulos/Modulo/ModuloEditar.xhtml" value="moduloEditar" rendered="#{menuBeans.moduloEditar}"></h:link>
+<h:link outcome="/modulos/Modulo/ModuloListar.xhtml" value="moduloListar" rendered="#{menuBeans.moduloListar}"></h:link>
+<h:link outcome="/modulos/Modulo/ModuloConsulta.xhtml" value="moduloConsulta" rendered="#{menuBeans.moduloConsulta}"></h:link>
+<h:link outcome="/modulos/Modulo/ModuloEliminar.xhtml" value="moduloEliminar" rendered="#{menuBeans.moduloEliminar}"></h:link>
+<h:link outcome="/modulos/Configurar/ConfigurarCrear.xhtml" value="configurarCrear" rendered="#{menuBeans.configurarCrear}"></h:link>
+<h:link outcome="/modulos/Configurar/ConfigurarEditar.xhtml" value="configurarEditar" rendered="#{menuBeans.configurarEditar}"></h:link>
+<h:link outcome="/modulos/Configurar/ConfigurarListar.xhtml" value="configurarListar" rendered="#{menuBeans.configurarListar}"></h:link>
+<h:link outcome="/modulos/Configurar/ConfigurarConsulta.xhtml" value="configurarConsulta" rendered="#{menuBeans.configurarConsulta}"></h:link>
+<h:link outcome="/modulos/Configurar/ConfigurarEliminar.xhtml" value="configurarEliminar" rendered="#{menuBeans.configurarEliminar}"></h:link>
+<h:link outcome="/modulos/Control/ControlCrear.xhtml" value="controlCrear" rendered="#{menuBeans.controlCrear}"></h:link>
+<h:link outcome="/modulos/Control/ControlEditar.xhtml" value="controlEditar" rendered="#{menuBeans.controlEditar}"></h:link>
+<h:link outcome="/modulos/Control/ControlListar.xhtml" value="controlListar" rendered="#{menuBeans.controlListar}"></h:link>
+<h:link outcome="/modulos/Control/ControlConsulta.xhtml" value="controlConsulta" rendered="#{menuBeans.controlConsulta}"></h:link>
+<h:link outcome="/modulos/Control/ControlEliminar.xhtml" value="controlEliminar" rendered="#{menuBeans.controlEliminar}"></h:link>
+<h:link outcome="/modulos/Usuario/UsuarioCrear.xhtml" value="usuarioCrear" rendered="#{menuBeans.usuarioCrear}"></h:link>
+<h:link outcome="/modulos/Usuario/UsuarioEditar.xhtml" value="usuarioEditar" rendered="#{menuBeans.usuarioEditar}"></h:link>
+<h:link outcome="/modulos/Usuario/UsuarioListar.xhtml" value="usuarioListar" rendered="#{menuBeans.usuarioListar}"></h:link>
+<h:link outcome="/modulos/Usuario/UsuarioConsulta.xhtml" value="usuarioConsulta" rendered="#{menuBeans.usuarioConsulta}"></h:link>
+<h:link outcome="/modulos/Usuario/UsuarioEliminar.xhtml" value="usuarioEliminar" rendered="#{menuBeans.usuarioEliminar}"></h:link>
+<h:link outcome="/modulos/Mensaje_usuario/Mensaje_usuarioCrear.xhtml" value="mensaje_usuarioCrear" rendered="#{menuBeans.mensaje_usuarioCrear}"></h:link>
+<h:link outcome="/modulos/Mensaje_usuario/Mensaje_usuarioEditar.xhtml" value="mensaje_usuarioEditar" rendered="#{menuBeans.mensaje_usuarioEditar}"></h:link>
+<h:link outcome="/modulos/Mensaje_usuario/Mensaje_usuarioListar.xhtml" value="mensaje_usuarioListar" rendered="#{menuBeans.mensaje_usuarioListar}"></h:link>
+<h:link outcome="/modulos/Mensaje_usuario/Mensaje_usuarioConsulta.xhtml" value="mensaje_usuarioConsulta" rendered="#{menuBeans.mensaje_usuarioConsulta}"></h:link>
+<h:link outcome="/modulos/Mensaje_usuario/Mensaje_usuarioEliminar.xhtml" value="mensaje_usuarioEliminar" rendered="#{menuBeans.mensaje_usuarioEliminar}"></h:link>
+<h:link outcome="/modulos/Tema/TemaCrear.xhtml" value="temaCrear" rendered="#{menuBeans.temaCrear}"></h:link>
+<h:link outcome="/modulos/Tema/TemaEditar.xhtml" value="temaEditar" rendered="#{menuBeans.temaEditar}"></h:link>
+<h:link outcome="/modulos/Tema/TemaListar.xhtml" value="temaListar" rendered="#{menuBeans.temaListar}"></h:link>
+<h:link outcome="/modulos/Tema/TemaConsulta.xhtml" value="temaConsulta" rendered="#{menuBeans.temaConsulta}"></h:link>
+<h:link outcome="/modulos/Tema/TemaEliminar.xhtml" value="temaEliminar" rendered="#{menuBeans.temaEliminar}"></h:link>
+<h:link outcome="/modulos/Marc_serie/Marc_serieCrear.xhtml" value="marc_serieCrear" rendered="#{menuBeans.marc_serieCrear}"></h:link>
+<h:link outcome="/modulos/Marc_serie/Marc_serieEditar.xhtml" value="marc_serieEditar" rendered="#{menuBeans.marc_serieEditar}"></h:link>
+<h:link outcome="/modulos/Marc_serie/Marc_serieListar.xhtml" value="marc_serieListar" rendered="#{menuBeans.marc_serieListar}"></h:link>
+<h:link outcome="/modulos/Marc_serie/Marc_serieConsulta.xhtml" value="marc_serieConsulta" rendered="#{menuBeans.marc_serieConsulta}"></h:link>
+<h:link outcome="/modulos/Marc_serie/Marc_serieEliminar.xhtml" value="marc_serieEliminar" rendered="#{menuBeans.marc_serieEliminar}"></h:link>
+<h:link outcome="/modulos/Mensaje/MensajeCrear.xhtml" value="mensajeCrear" rendered="#{menuBeans.mensajeCrear}"></h:link>
+<h:link outcome="/modulos/Mensaje/MensajeEditar.xhtml" value="mensajeEditar" rendered="#{menuBeans.mensajeEditar}"></h:link>
+<h:link outcome="/modulos/Mensaje/MensajeListar.xhtml" value="mensajeListar" rendered="#{menuBeans.mensajeListar}"></h:link>
+<h:link outcome="/modulos/Mensaje/MensajeConsulta.xhtml" value="mensajeConsulta" rendered="#{menuBeans.mensajeConsulta}"></h:link>
+<h:link outcome="/modulos/Mensaje/MensajeEliminar.xhtml" value="mensajeEliminar" rendered="#{menuBeans.mensajeEliminar}"></h:link>
+<h:link outcome="/modulos/Marc_ejemplar/Marc_ejemplarCrear.xhtml" value="marc_ejemplarCrear" rendered="#{menuBeans.marc_ejemplarCrear}"></h:link>
+<h:link outcome="/modulos/Marc_ejemplar/Marc_ejemplarEditar.xhtml" value="marc_ejemplarEditar" rendered="#{menuBeans.marc_ejemplarEditar}"></h:link>
+<h:link outcome="/modulos/Marc_ejemplar/Marc_ejemplarListar.xhtml" value="marc_ejemplarListar" rendered="#{menuBeans.marc_ejemplarListar}"></h:link>
+<h:link outcome="/modulos/Marc_ejemplar/Marc_ejemplarConsulta.xhtml" value="marc_ejemplarConsulta" rendered="#{menuBeans.marc_ejemplarConsulta}"></h:link>
+<h:link outcome="/modulos/Marc_ejemplar/Marc_ejemplarEliminar.xhtml" value="marc_ejemplarEliminar" rendered="#{menuBeans.marc_ejemplarEliminar}"></h:link>
+<h:link outcome="/modulos/Bitacora/BitacoraCrear.xhtml" value="bitacoraCrear" rendered="#{menuBeans.bitacoraCrear}"></h:link>
+<h:link outcome="/modulos/Bitacora/BitacoraEditar.xhtml" value="bitacoraEditar" rendered="#{menuBeans.bitacoraEditar}"></h:link>
+<h:link outcome="/modulos/Bitacora/BitacoraListar.xhtml" value="bitacoraListar" rendered="#{menuBeans.bitacoraListar}"></h:link>
+<h:link outcome="/modulos/Bitacora/BitacoraConsulta.xhtml" value="bitacoraConsulta" rendered="#{menuBeans.bitacoraConsulta}"></h:link>
+<h:link outcome="/modulos/Bitacora/BitacoraEliminar.xhtml" value="bitacoraEliminar" rendered="#{menuBeans.bitacoraEliminar}"></h:link>
+<h:link outcome="/modulos/Usu_mod_opc/Usu_mod_opcCrear.xhtml" value="usu_mod_opcCrear" rendered="#{menuBeans.usu_mod_opcCrear}"></h:link>
+<h:link outcome="/modulos/Usu_mod_opc/Usu_mod_opcEditar.xhtml" value="usu_mod_opcEditar" rendered="#{menuBeans.usu_mod_opcEditar}"></h:link>
+<h:link outcome="/modulos/Usu_mod_opc/Usu_mod_opcListar.xhtml" value="usu_mod_opcListar" rendered="#{menuBeans.usu_mod_opcListar}"></h:link>
+<h:link outcome="/modulos/Usu_mod_opc/Usu_mod_opcConsulta.xhtml" value="usu_mod_opcConsulta" rendered="#{menuBeans.usu_mod_opcConsulta}"></h:link>
+<h:link outcome="/modulos/Usu_mod_opc/Usu_mod_opcEliminar.xhtml" value="usu_mod_opcEliminar" rendered="#{menuBeans.usu_mod_opcEliminar}"></h:link>
+<h:link outcome="/modulos/Marc_dato/Marc_datoCrear.xhtml" value="marc_datoCrear" rendered="#{menuBeans.marc_datoCrear}"></h:link>
+<h:link outcome="/modulos/Marc_dato/Marc_datoEditar.xhtml" value="marc_datoEditar" rendered="#{menuBeans.marc_datoEditar}"></h:link>
+<h:link outcome="/modulos/Marc_dato/Marc_datoListar.xhtml" value="marc_datoListar" rendered="#{menuBeans.marc_datoListar}"></h:link>
+<h:link outcome="/modulos/Marc_dato/Marc_datoConsulta.xhtml" value="marc_datoConsulta" rendered="#{menuBeans.marc_datoConsulta}"></h:link>
+<h:link outcome="/modulos/Marc_dato/Marc_datoEliminar.xhtml" value="marc_datoEliminar" rendered="#{menuBeans.marc_datoEliminar}"></h:link>
+<h:link outcome="/modulos/Servidor/ServidorCrear.xhtml" value="servidorCrear" rendered="#{menuBeans.servidorCrear}"></h:link>
+<h:link outcome="/modulos/Servidor/ServidorEditar.xhtml" value="servidorEditar" rendered="#{menuBeans.servidorEditar}"></h:link>
+<h:link outcome="/modulos/Servidor/ServidorListar.xhtml" value="servidorListar" rendered="#{menuBeans.servidorListar}"></h:link>
+<h:link outcome="/modulos/Servidor/ServidorConsulta.xhtml" value="servidorConsulta" rendered="#{menuBeans.servidorConsulta}"></h:link>
+<h:link outcome="/modulos/Servidor/ServidorEliminar.xhtml" value="servidorEliminar" rendered="#{menuBeans.servidorEliminar}"></h:link>
+<h:link outcome="/modulos/Lector/LectorCrear.xhtml" value="lectorCrear" rendered="#{menuBeans.lectorCrear}"></h:link>
+<h:link outcome="/modulos/Lector/LectorEditar.xhtml" value="lectorEditar" rendered="#{menuBeans.lectorEditar}"></h:link>
+<h:link outcome="/modulos/Lector/LectorListar.xhtml" value="lectorListar" rendered="#{menuBeans.lectorListar}"></h:link>
+<h:link outcome="/modulos/Lector/LectorConsulta.xhtml" value="lectorConsulta" rendered="#{menuBeans.lectorConsulta}"></h:link>
+<h:link outcome="/modulos/Lector/LectorEliminar.xhtml" value="lectorEliminar" rendered="#{menuBeans.lectorEliminar}"></h:link>
+<h:link outcome="/modulos/Estatus/EstatusCrear.xhtml" value="estatusCrear" rendered="#{menuBeans.estatusCrear}"></h:link>
+<h:link outcome="/modulos/Estatus/EstatusEditar.xhtml" value="estatusEditar" rendered="#{menuBeans.estatusEditar}"></h:link>
+<h:link outcome="/modulos/Estatus/EstatusListar.xhtml" value="estatusListar" rendered="#{menuBeans.estatusListar}"></h:link>
+<h:link outcome="/modulos/Estatus/EstatusConsulta.xhtml" value="estatusConsulta" rendered="#{menuBeans.estatusConsulta}"></h:link>
+<h:link outcome="/modulos/Estatus/EstatusEliminar.xhtml" value="estatusEliminar" rendered="#{menuBeans.estatusEliminar}"></h:link>
+<h:link outcome="/modulos/Biblioteca/BibliotecaCrear.xhtml" value="bibliotecaCrear" rendered="#{menuBeans.bibliotecaCrear}"></h:link>
+<h:link outcome="/modulos/Biblioteca/BibliotecaEditar.xhtml" value="bibliotecaEditar" rendered="#{menuBeans.bibliotecaEditar}"></h:link>
+<h:link outcome="/modulos/Biblioteca/BibliotecaListar.xhtml" value="bibliotecaListar" rendered="#{menuBeans.bibliotecaListar}"></h:link>
+<h:link outcome="/modulos/Biblioteca/BibliotecaConsulta.xhtml" value="bibliotecaConsulta" rendered="#{menuBeans.bibliotecaConsulta}"></h:link>
+<h:link outcome="/modulos/Biblioteca/BibliotecaEliminar.xhtml" value="bibliotecaEliminar" rendered="#{menuBeans.bibliotecaEliminar}"></h:link>
+<h:link outcome="/modulos/Anuncio/AnuncioCrear.xhtml" value="anuncioCrear" rendered="#{menuBeans.anuncioCrear}"></h:link>
+<h:link outcome="/modulos/Anuncio/AnuncioEditar.xhtml" value="anuncioEditar" rendered="#{menuBeans.anuncioEditar}"></h:link>
+<h:link outcome="/modulos/Anuncio/AnuncioListar.xhtml" value="anuncioListar" rendered="#{menuBeans.anuncioListar}"></h:link>
+<h:link outcome="/modulos/Anuncio/AnuncioConsulta.xhtml" value="anuncioConsulta" rendered="#{menuBeans.anuncioConsulta}"></h:link>
+<h:link outcome="/modulos/Anuncio/AnuncioEliminar.xhtml" value="anuncioEliminar" rendered="#{menuBeans.anuncioEliminar}"></h:link>
+<h:link outcome="/modulos/Marc_registro/Marc_registroCrear.xhtml" value="marc_registroCrear" rendered="#{menuBeans.marc_registroCrear}"></h:link>
+<h:link outcome="/modulos/Marc_registro/Marc_registroEditar.xhtml" value="marc_registroEditar" rendered="#{menuBeans.marc_registroEditar}"></h:link>
+<h:link outcome="/modulos/Marc_registro/Marc_registroListar.xhtml" value="marc_registroListar" rendered="#{menuBeans.marc_registroListar}"></h:link>
+<h:link outcome="/modulos/Marc_registro/Marc_registroConsulta.xhtml" value="marc_registroConsulta" rendered="#{menuBeans.marc_registroConsulta}"></h:link>
+<h:link outcome="/modulos/Marc_registro/Marc_registroEliminar.xhtml" value="marc_registroEliminar" rendered="#{menuBeans.marc_registroEliminar}"></h:link>
+<h:link outcome="/modulos/Frecuencia/FrecuenciaCrear.xhtml" value="frecuenciaCrear" rendered="#{menuBeans.frecuenciaCrear}"></h:link>
+<h:link outcome="/modulos/Frecuencia/FrecuenciaEditar.xhtml" value="frecuenciaEditar" rendered="#{menuBeans.frecuenciaEditar}"></h:link>
+<h:link outcome="/modulos/Frecuencia/FrecuenciaListar.xhtml" value="frecuenciaListar" rendered="#{menuBeans.frecuenciaListar}"></h:link>
+<h:link outcome="/modulos/Frecuencia/FrecuenciaConsulta.xhtml" value="frecuenciaConsulta" rendered="#{menuBeans.frecuenciaConsulta}"></h:link>
+<h:link outcome="/modulos/Frecuencia/FrecuenciaEliminar.xhtml" value="frecuenciaEliminar" rendered="#{menuBeans.frecuenciaEliminar}"></h:link>
+<h:link outcome="/modulos/Pais/PaisCrear.xhtml" value="paisCrear" rendered="#{menuBeans.paisCrear}"></h:link>
+<h:link outcome="/modulos/Pais/PaisEditar.xhtml" value="paisEditar" rendered="#{menuBeans.paisEditar}"></h:link>
+<h:link outcome="/modulos/Pais/PaisListar.xhtml" value="paisListar" rendered="#{menuBeans.paisListar}"></h:link>
+<h:link outcome="/modulos/Pais/PaisConsulta.xhtml" value="paisConsulta" rendered="#{menuBeans.paisConsulta}"></h:link>
+<h:link outcome="/modulos/Pais/PaisEliminar.xhtml" value="paisEliminar" rendered="#{menuBeans.paisEliminar}"></h:link>
+</h:panelGrid>
+<br />
+<h:messages/>
+</h:form>
+<h:form rendered="#{!loginBean.logeado}">
+  <h:panelGrid columns="1">
+     <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+     <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+  </h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.mensaje_usuarioCrear}">
+<center><h1>mensaje_usuario Crear</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_menusu}" for="id_menusu" />
+<h:inputText id="id_menusu" value="#{mensaje_usuario.id_menusu}" title="#{mensajes.id_menusu}" required="true" requiredMessage="#{mensajes.id_menusu}"/>
+<h:outputLabel value="#{mensajes.id_usuario_ori}" for="id_usuario_ori" />
+<h:inputText id="id_usuario_ori" value="#{mensaje_usuario.id_usuario_ori}" title="#{mensajes.id_usuario_ori}" required="true" requiredMessage="#{mensajes.id_usuario_ori}"/>
+<h:outputLabel value="#{mensajes.id_usuario_des}" for="id_usuario_des" />
+<h:inputText id="id_usuario_des" value="#{mensaje_usuario.id_usuario_des}" title="#{mensajes.id_usuario_des}" required="true" requiredMessage="#{mensajes.id_usuario_des}"/>
+<h:outputLabel value="#{mensajes.id_mensaje}" for="id_mensaje" />
+<h:selectOneMenu value="#{Mensaje.id_mensaje}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.fecha}" for="fecha" />
+<h:inputText id="fecha" value="#{mensaje_usuario.fecha}" title="#{mensajes.fecha}" required="false" requiredMessage="#{mensajes.fecha}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.verificado}" for="verificado" />
+<h:selectBooleanCheckbox value="#{verificado}"  width="5" height="5" required="false" requiredMessage="#{mensajes.verificado}" />
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{mensaje_usuarioController.Crear}" value="#{mensajes['boton.crear']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.mensaje_usuarioCrear}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

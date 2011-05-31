@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.controlCrear}">
+<center><h1>control Crear</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_control}" for="id_control" />
+<h:inputText id="id_control" value="#{control.id_control}" title="#{mensajes.id_control}" required="true" requiredMessage="#{mensajes.id_control}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{control.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{controlController.Crear}" value="#{mensajes['boton.crear']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.controlCrear}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

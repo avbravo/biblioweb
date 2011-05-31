@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.usuarioEditar}">
+<center><h1>usuario Editar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_usuario}" for="id_usuario" />
+<h:inputText id="id_usuario" value="#{usuario.id_usuario}" title="#{mensajes.id_usuario}" required="true" requiredMessage="#{mensajes.id_usuario}"/>
+<h:outputLabel value="#{mensajes.id_sala}" for="id_sala" />
+<h:selectOneMenu value="#{Sala.id_sala}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_control}" for="id_control" />
+<h:selectOneMenu value="#{Control.id_control}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:selectOneMenu value="#{Estatus.id_estatus}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.dni}" for="dni" />
+<h:inputText id="dni" value="#{usuario.dni}" title="#{mensajes.dni}" required="true" requiredMessage="#{mensajes.dni}"/>
+<h:outputLabel value="#{mensajes.clave}" for="clave" />
+<h:inputText id="clave" value="#{usuario.clave}" title="#{mensajes.clave}" required="true" requiredMessage="#{mensajes.clave}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{usuario.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+<h:outputLabel value="#{mensajes.apellido}" for="apellido" />
+<h:inputText id="apellido" value="#{usuario.apellido}" title="#{mensajes.apellido}" required="true" requiredMessage="#{mensajes.apellido}"/>
+<h:outputLabel value="#{mensajes.sexo}" for="sexo" />
+<h:inputText id="sexo" value="#{usuario.sexo}" title="#{mensajes.sexo}" required="false" requiredMessage="#{mensajes.sexo}"/>
+<h:outputLabel value="#{mensajes.telefono}" for="telefono" />
+<h:inputText id="telefono" value="#{usuario.telefono}" title="#{mensajes.telefono}" required="false" requiredMessage="#{mensajes.telefono}"/>
+<h:outputLabel value="#{mensajes.celular}" for="celular" />
+<h:inputText id="celular" value="#{usuario.celular}" title="#{mensajes.celular}" required="false" requiredMessage="#{mensajes.celular}"/>
+<h:outputLabel value="#{mensajes.email}" for="email" />
+<h:inputText id="email" value="#{usuario.email}" title="#{mensajes.email}" required="false" requiredMessage="#{mensajes.email}"/>
+<h:outputLabel value="#{mensajes.apostal}" for="apostal" />
+<h:inputText id="apostal" value="#{usuario.apostal}" title="#{mensajes.apostal}" required="false" requiredMessage="#{mensajes.apostal}"/>
+<h:outputLabel value="#{mensajes.direccion}" for="direccion" />
+<h:inputText id="direccion" value="#{usuario.direccion}" title="#{mensajes.direccion}" required="false" requiredMessage="#{mensajes.direccion}"/>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{usuarioController.Editar}" value="#{mensajes['boton.editar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.usuarioEditar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+<ui:composition template="./../../plantilla.xhtml">
+<!--
+<ui:define name="top">
+top
+</ui:define>
+-->
+<!--
+<ui:define name="left">
+left
+</ui:define>
+-->
+<ui:define name="content">
+<h:form rendered="#{menuBeans.lectorEliminar}">
+<center><h1>lector Eliminar</h1></center>
+<h:panelGrid columns="2">
+<h:outputLabel value="#{mensajes.id_lector}" for="id_lector" />
+<h:inputText id="id_lector" value="#{lector.id_lector}" title="#{mensajes.id_lector}" required="true" requiredMessage="#{mensajes.id_lector}"/>
+<h:outputLabel value="#{mensajes.id_perfil}" for="id_perfil" />
+<h:selectOneMenu value="#{Perfil.id_perfil}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_region}" for="id_region" />
+<h:selectOneMenu value="#{Region.id_region}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_dependencia}" for="id_dependencia" />
+<h:selectOneMenu value="#{Dependencia.id_dependencia}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.id_estatus}" for="id_estatus" />
+<h:selectOneMenu value="#{Estatus.id_estatus}">
+<f:selectItems value="#{prioridadesBeans.prioridadesCombo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="#{mensajes.dni}" for="dni" />
+<h:inputText id="dni" value="#{lector.dni}" title="#{mensajes.dni}" required="true" requiredMessage="#{mensajes.dni}"/>
+<h:outputLabel value="#{mensajes.clave}" for="clave" />
+<h:inputText id="clave" value="#{lector.clave}" title="#{mensajes.clave}" required="true" requiredMessage="#{mensajes.clave}"/>
+<h:outputLabel value="#{mensajes.nombre}" for="nombre" />
+<h:inputText id="nombre" value="#{lector.nombre}" title="#{mensajes.nombre}" required="true" requiredMessage="#{mensajes.nombre}"/>
+<h:outputLabel value="#{mensajes.apellido}" for="apellido" />
+<h:inputText id="apellido" value="#{lector.apellido}" title="#{mensajes.apellido}" required="true" requiredMessage="#{mensajes.apellido}"/>
+<h:outputLabel value="#{mensajes.sexo}" for="sexo" />
+<h:inputText id="sexo" value="#{lector.sexo}" title="#{mensajes.sexo}" required="true" requiredMessage="#{mensajes.sexo}"/>
+<h:outputLabel value="#{mensajes.telefono}" for="telefono" />
+<h:inputText id="telefono" value="#{lector.telefono}" title="#{mensajes.telefono}" required="false" requiredMessage="#{mensajes.telefono}"/>
+<h:outputLabel value="#{mensajes.celular}" for="celular" />
+<h:inputText id="celular" value="#{lector.celular}" title="#{mensajes.celular}" required="false" requiredMessage="#{mensajes.celular}"/>
+<h:outputLabel value="#{mensajes.email}" for="email" />
+<h:inputText id="email" value="#{lector.email}" title="#{mensajes.email}" required="false" requiredMessage="#{mensajes.email}"/>
+<h:outputLabel value="#{mensajes.apostal}" for="apostal" />
+<h:inputText id="apostal" value="#{lector.apostal}" title="#{mensajes.apostal}" required="false" requiredMessage="#{mensajes.apostal}"/>
+<h:outputLabel value="#{mensajes.direccion}" for="direccion" />
+<h:inputText id="direccion" value="#{lector.direccion}" title="#{mensajes.direccion}" required="false" requiredMessage="#{mensajes.direccion}"/>
+<h:outputLabel value="#{mensajes.observacion}" for="observacion" />
+<h:inputText id="observacion" value="#{lector.observacion}" title="#{mensajes.observacion}" required="false" requiredMessage="#{mensajes.observacion}"/>
+<h:outputLabel value="#{mensajes.expira_carnet}" for="expira_carnet" />
+<h:inputText id="expira_carnet" value="#{lector.expira_carnet}" title="#{mensajes.expira_carnet}" required="false" requiredMessage="#{mensajes.expira_carnet}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.expira_prestamo}" for="expira_prestamo" />
+<h:inputText id="expira_prestamo" value="#{lector.expira_prestamo}" title="#{mensajes.expira_prestamo}" required="false" requiredMessage="#{mensajes.expira_prestamo}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+<h:outputLabel value="#{mensajes.nacio}" for="nacio" />
+<h:inputText id="nacio" value="#{lector.nacio}" title="#{mensajes.nacio}" required="false" requiredMessage="#{mensajes.nacio}">
+<f:convertDateTime pattern="dd/MM/yyyy" />
+</h:inputText>
+</h:panelGrid>
+<br />
+<h:panelGrid columns="2">
+<h:commandLink action="#{lectorController.Eliminar}" value="#{mensajes['boton.eliminar']}" />
+</h:panelGrid>
+<h:messages/>
+</h:form>
+
+<h:form rendered="#{!menuBeans.lectorEliminar}">
+<h:panelGrid columns="1">
+  <h:outputText value="#{mensajes['login.accesodenegado']}"/>
+  <h:outputText value="#{mensajes['login.accesodenegadoDetalle']}"/>
+  <h:link outcome = "/modulos/Login/login.xhtml" value="#{mensajes['boton.regresar']}" />
+</h:panelGrid>
+</h:form>
+</ui:define>
+ </ui:composition>
+</h:body>
+</html>
